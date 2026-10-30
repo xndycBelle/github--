@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>立志成为代码高手</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+    background: #f5f7fa;
+    color: #333;
+    line-height: 1.7;
+  }
+
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 60px 20px;
+    text-align: center;
+  }
+
+  h1 {
+    font-size: 36px;
+    color: #2c3e50;
+    margin-bottom: 20px;
+  }
+
+  .intro {
+    font-size: 17px;
+    color: #666;
+    max-width: 640px;
+    margin: 0 auto 45px;
+  }
+
+  .cards {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 45px;
+  }
+
+  .card {
+    background: #fff;
+    border-radius: 10px;
+    padding: 28px 22px;
+    width: 250px;
+    box-shadow: 0 2px 10px rgba(0,0,0,.08);
+    transition: transform .2s;
+  }
+
+  .card:hover {
+    transform: translateY(-5px);
+  }
+
+  .card h2 {
+    font-size: 19px;
+    color: #2c3e50;
+    margin-bottom: 10px;
+  }
+
+  .card p {
+    font-size: 14px;
+    color: #777;
+  }
+
+  .btn {
+    background: #4a90d9;
+    color: #fff;
+    border: none;
+    padding: 13px 42px;
+    font-size: 16px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background .2s;
+  }
+
+  .btn:hover {
+    background: #357abd;
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h1>立志成为代码高手</h1>
+
+  <p class="intro">
+    编程不是天赋的较量，而是日复一日的积累。每一行敲下的代码、每一个解决的 Bug，
+    都在悄悄拉开你与昨天的差距。从今天起，沉下心、动手写、坚持做，
+    时间会给你答案。
+  </p>
+
+  <div class="cards">
+    <div class="card">
+      <h2>夯实基础</h2>
+      <p>吃透数据结构、算法与计算机原理，地基越深，楼才能盖得越高。</p>
+    </div>
+    <div class="card">
+      <h2>大量实践</h2>
+      <p>看懂不等于会写。亲手做出项目，把知识真正变成自己的能力。</p>
+    </div>
+    <div class="card">
+      <h2>持续复盘</h2>
+      <p>记录踩过的坑，总结好的写法，让每一次错误都只犯一次。</p>
+    </div>
+  </div>
+
+  <button class="btn" onclick="alert('从现在开始，写下第一行代码！')">立即开始</button>
+</div>
+
+</body>
+</html>
