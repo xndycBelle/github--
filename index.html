@@ -3,15 +3,26 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>立志成为代码高手</title>
+<title>GitHub 练习</title>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   body {
+    --bg: #f5f7fa;
+    --fg: #333;
+    --card: #fff;
+    --sub: #777;
     font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
-    background: #f5f7fa;
-    color: #333;
+    background: var(--bg);
+    color: var(--fg);
     line-height: 1.7;
+  }
+
+  body.dark {
+    --bg: #1e2227;
+    --fg: #ddd;
+    --card: #282c34;
+    --sub: #aaa;
   }
 
   .container {
@@ -21,17 +32,13 @@
     text-align: center;
   }
 
-  h1 {
-    font-size: 36px;
-    color: #2c3e50;
-    margin-bottom: 20px;
-  }
+  h1 { font-size: 34px; margin-bottom: 18px; }
 
   .intro {
-    font-size: 17px;
-    color: #666;
-    max-width: 640px;
-    margin: 0 auto 45px;
+    font-size: 16px;
+    color: var(--sub);
+    max-width: 620px;
+    margin: 0 auto 40px;
   }
 
   .cards {
@@ -39,77 +46,112 @@
     justify-content: center;
     gap: 20px;
     flex-wrap: wrap;
-    margin-bottom: 45px;
+    margin-bottom: 35px;
   }
 
   .card {
-    background: #fff;
+    background: var(--card);
     border-radius: 10px;
-    padding: 28px 22px;
+    padding: 26px 20px;
     width: 250px;
     box-shadow: 0 2px 10px rgba(0,0,0,.08);
-    transition: transform .2s;
   }
 
-  .card:hover {
-    transform: translateY(-5px);
-  }
+  .card h2 { font-size: 18px; margin-bottom: 8px; }
+  .card p { font-size: 14px; color: var(--sub); }
 
-  .card h2 {
-    font-size: 19px;
-    color: #2c3e50;
-    margin-bottom: 10px;
-  }
-
-  .card p {
-    font-size: 14px;
-    color: #777;
+  .btns {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin-bottom: 25px;
   }
 
   .btn {
     background: #4a90d9;
     color: #fff;
     border: none;
-    padding: 13px 42px;
-    font-size: 16px;
-    border-radius: 25px;
+    padding: 11px 26px;
+    font-size: 15px;
+    border-radius: 22px;
     cursor: pointer;
-    transition: background .2s;
   }
 
-  .btn:hover {
-    background: #357abd;
+  .btn:hover { background: #357abd; }
+
+  .box {
+    background: var(--card);
+    border-radius: 8px;
+    padding: 16px;
+    font-size: 14px;
+    color: var(--sub);
+    max-width: 560px;
+    margin: 0 auto;
   }
+
+  #cmds { display: none; text-align: left; margin-top: 12px; }
+  #cmds code { color: #4a90d9; }
 </style>
 </head>
 <body>
 
 <div class="container">
-  <h1>立志成为代码高手</h1>
+  <h1>GitHub 练习</h1>
 
   <p class="intro">
-    编程不是天赋的较量，而是日复一日的积累。每一行敲下的代码、每一个解决的 Bug，
-    都在悄悄拉开你与昨天的差距。从今天起，沉下心、动手写、坚持做，
-    时间会给你答案。
+    把代码放到 GitHub 上其实只有三步：建仓库、做提交、推远程。
+    下面三个按键可以帮你熟悉这套流程，多点几下试试。
   </p>
 
   <div class="cards">
     <div class="card">
-      <h2>夯实基础</h2>
-      <p>吃透数据结构、算法与计算机原理，地基越深，楼才能盖得越高。</p>
+      <h2>创建仓库</h2>
+      <p>在 GitHub 新建仓库，作为代码的云端归宿。</p>
     </div>
     <div class="card">
-      <h2>大量实践</h2>
-      <p>看懂不等于会写。亲手做出项目，把知识真正变成自己的能力。</p>
+      <h2>提交更改</h2>
+      <p>用 add 暂存、commit 提交，留下清晰记录。</p>
     </div>
     <div class="card">
-      <h2>持续复盘</h2>
-      <p>记录踩过的坑，总结好的写法，让每一次错误都只犯一次。</p>
+      <h2>推送同步</h2>
+      <p>用 push 把本地提交推送到 GitHub 云端。</p>
     </div>
   </div>
 
-  <button class="btn" onclick="alert('从现在开始，写下第一行代码！')">立即开始</button>
+  <div class="btns">
+    <button class="btn" onclick="document.body.classList.toggle('dark')">切换主题</button>
+    <button class="btn" onclick="showTip()">Git 小贴士</button>
+    <button class="btn" onclick="toggleCmds()">常用命令</button>
+  </div>
+
+  <div class="box" id="tip">点上面的按钮，这里会显示内容。</div>
+
+  <div class="box" id="cmds">
+    <code>git add .</code> —— 暂存所有改动<br>
+    <code>git commit -m "说明"</code> —— 提交到本地<br>
+    <code>git push</code> —— 推送到 GitHub
+  </div>
 </div>
+
+<script>
+  var tips = [
+    "提交信息写清楚，未来的你会感谢现在的自己。",
+    "小步提交：改一个功能就提交一次，别攒一大堆。",
+    "push 之前先 pull，能避免大多数冲突。",
+    "不确定就先 git status，它会告诉你现在在哪一步。"
+  ];
+
+  function showTip() {
+    var t = tips[Math.floor(Math.random() * tips.length)];
+    document.getElementById("tip").textContent = t;
+  }
+
+  function toggleCmds() {
+    var el = document.getElementById("cmds");
+    el.style.display = (el.style.display === "block") ? "none" : "block";
+  }
+</script>
 
 </body>
 </html>
